@@ -7,10 +7,6 @@ WORKDIR /app
 COPY package.json yarn.lock .yarnrc.yml /app/
 COPY .yarn/releases/ /app/.yarn/releases/
 
-RUN apk add --update --no-cache g++ make\
-    && yarn install\
-    && apk del g++ make
-
 COPY . /app
 
 RUN yarn build
